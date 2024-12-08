@@ -1,0 +1,48 @@
+# yaml-language-server: $schema=./router_config_options.yaml
+# yaml-language-server_if_online: $schema=https://raw.githubusercontent.com/wundergraph/cosmo/main/router/pkg/config/config.schema.json
+
+version: '1'
+
+dev_mode: true
+log_level: debug
+access_logs:
+  enabled: true
+
+execution_config:
+  file:
+    path: "/router.json"
+
+# websocket:
+#   enabled: true 
+#   forward_upgrade_headers: 
+#     enabled: true
+
+ 
+headers:
+  all: # Header rules for all origin requests.
+    request:
+      - op: "propagate"
+        named: "user-id"
+      # - op: "propagate"
+      #   named: "Authorization"
+      # - op: "propagate"
+      #   named: "X-Tenant-Id"
+      # - op: "propagate"
+      #   named: "User-Agent"
+
+      # # 'User-Agent': 'graphql-ws client',
+      # - op: "set"
+      #   name: "Content-Type"
+      #   value: "application/json"
+
+# cors:
+#   allow_origins: ["*"]
+#   allow_methods:
+#     - HEAD
+#     - GET
+#     - POST
+#   allow_headers:
+#     - Origin
+#     - Content-Length
+#     - Content-Type
+#   allow_credentials: true

@@ -1,0 +1,29 @@
+# see https://cosmo-docs.wundergraph.com/cli/router/compose
+
+version: 1
+subgraphs:
+  - name: yoga
+    routing_url: http://localhost:4000/graphql
+    # subscription:
+    #   protocol: "sse"
+    # a) Specify a schema to introspect by file OR
+    # b) Specify introspection to introspect on a running subgraph
+    introspection:
+      url: http://localhost:4000/graphql 
+  - name: jikan-ga-aru
+    routing_url: http://localhost:8080/graphql
+    subscription:
+      url: http://localhost:8080/graphql #Optional, defaults to routing_url
+      protocol: ws # Optional, defaults to ws (websockets)
+      websocketSubprotocol: "graphql-transport-ws" # Optional, defaults to auto. 
+      # Available options are auto, graphql-ws, graphql-transport-ws
+    introspection:
+      url: http://localhost:8080/graphql
+  - name: spring-graphql
+    routing_url: http://localhost:8090/graphql
+    subscription:
+      url: http://localhost:8090/graphql 
+      protocol: "ws"
+      websocketSubprotocol: "graphql-transport-ws"
+    introspection:
+      url: http://localhost:8090/graphql
