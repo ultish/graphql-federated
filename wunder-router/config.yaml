@@ -8,6 +8,21 @@ log_level: debug
 access_logs:
   enabled: true
 
+telemetry:
+  service_name: "cosmo-router"
+
+  tracing:
+    enabled: true
+    export_graphql_variables: false
+    propagation:
+#      jaeger: true
+      trace_context: true
+
+    exporters:
+      - endpoint: http://192.168.1.41:4317
+        exporter: grpc
+
+
 execution_config:
   file:
     path: "/router.json"
