@@ -5,19 +5,19 @@ version: '1'
 
 dev_mode: true
 log_level: debug
+
+
 access_logs:
   enabled: true
 
 telemetry:
   service_name: "cosmo-router"
-
   tracing:
     enabled: true
-    export_graphql_variables: false
+    export_graphql_variables: true
     propagation:
-#      jaeger: true
-      trace_context: true
-
+      jaeger: true
+#      trace_context: true
     exporters:
       - endpoint: http://192.168.1.41:4317
         exporter: grpc
@@ -36,10 +36,10 @@ execution_config:
 headers:
   all: # Header rules for all origin requests.
     request:
-      - op: "propagate"
-        named: "user-id"
-      # - op: "propagate"
-      #   named: "Authorization"
+#      - op: "propagate"
+#        named: "user-id"
+     - op: "propagate"
+       named: "Authorization"
       # - op: "propagate"
       #   named: "X-Tenant-Id"
       # - op: "propagate"
@@ -50,14 +50,18 @@ headers:
       #   name: "Content-Type"
       #   value: "application/json"
 
-# cors:
-#   allow_origins: ["*"]
-#   allow_methods:
-#     - HEAD
-#     - GET
-#     - POST
-#   allow_headers:
-#     - Origin
-#     - Content-Length
-#     - Content-Type
-#   allow_credentials: true
+cors:
+  allow_origins: ["*"]
+#  allow_methods:
+#    - POST
+#    - GET
+#    - HEAD
+#    - DELETE
+#    - OPTIONS
+#    - PATCH
+#    - PUT
+  allow_headers: ["*"]
+#    - Origin
+#    - Content-Length
+#    - Content-Type
+  allow_credentials: true
