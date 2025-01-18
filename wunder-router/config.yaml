@@ -36,10 +36,10 @@ execution_config:
 headers:
   all: # Header rules for all origin requests.
     request:
-#      - op: "propagate"
-#        named: "user-id"
-     - op: "propagate"
-       named: "Authorization"
+      - op: "propagate"
+        named: "user-id"
+      - op: "propagate"
+        named: "Authorization"
       # - op: "propagate"
       #   named: "X-Tenant-Id"
       # - op: "propagate"
