@@ -17,6 +17,9 @@ importers:
       graphql:
         specifier: ^16.9.0
         version: 16.9.0
+      graphql-subscriptions:
+        specifier: ^3.0.0
+        version: 3.0.0(graphql@16.9.0)
       graphql-ws:
         specifier: ^5.16.0
         version: 5.16.0(graphql@16.9.0)
@@ -226,6 +229,11 @@ packages:
 
   fast-querystring@1.1.2:
     resolution: {integrity: sha512-g6KuKWmFXc0fID8WWH0jit4g0AGBoJhCkJMb1RmbsSEUNvQ+ZC8D6CUZ+GtF8nMzSPXnhiePyyqqipzNNEnHjg==}
+
+  graphql-subscriptions@3.0.0:
+    resolution: {integrity: sha512-kZCdevgmzDjGAOqH7GlDmQXYAkuHoKpMlJrqF40HMPhUhM5ZWSFSxCwD/nSi6AkaijmMfsFhoJRGJ27UseCvRA==}
+    peerDependencies:
+      graphql: ^15.7.2 || ^16.0.0
 
   graphql-ws@5.16.0:
     resolution: {integrity: sha512-Ju2RCU2dQMgSKtArPbEtsK5gNLnsQyTNIo/T7cZNp96niC1x0KdJNZV0TIoilceBPQwfb5itrGl8pkFeOUMl4A==}
@@ -508,6 +516,10 @@ snapshots:
   fast-querystring@1.1.2:
     dependencies:
       fast-decode-uri-component: 1.0.1
+
+  graphql-subscriptions@3.0.0(graphql@16.9.0):
+    dependencies:
+      graphql: 16.9.0
 
   graphql-ws@5.16.0(graphql@16.9.0):
     dependencies:

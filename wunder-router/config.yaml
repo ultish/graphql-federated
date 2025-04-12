@@ -10,14 +10,19 @@ log_level: debug
 access_logs:
   enabled: true
 
+
 telemetry:
   service_name: "cosmo-router"
   tracing:
     enabled: true
     export_graphql_variables: true
     propagation:
+      # https://www.w3.org/TR/trace-context/
+      trace_context: true
+      # https://www.w3.org/TR/baggage/
+      baggage: false
+      # https://www.jaegertracing.io/ (compliant with opentracing)
       jaeger: true
-#      trace_context: true
     exporters:
       - endpoint: http://192.168.1.41:4317
         exporter: grpc
